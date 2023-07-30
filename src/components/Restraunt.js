@@ -21,14 +21,14 @@ const Restraunt = () =>{
 
     return (
      <>
-        <div className="restraunt">
-            <img src={CDN_URL+resDetails?.cloudinaryImageId} alt="image not found!"/>
+        <div className="flex gap-5 border border-purple-800 shadow-md m-5 p-5 rounded-md overflow-hidden">
+            <img className="border rounded-md w-50 h-60" src={CDN_URL+resDetails?.cloudinaryImageId} alt="image not found!"/>
           <div className="content">
-          <div className="res-name">
+          <div className="font-serif font-bold text-2xl">
             <span>{resDetails.name}</span>
             </div>
-            <div className="res-details">
-            <span>{resDetails?.locality}</span>
+            <div className="flex flex-col">
+            <span className="italic">{resDetails?.locality}</span>
             <span>{resDetails?.areaName}</span>
             <span>⭐{resDetails?.avgRating}</span>
             <span>{resDetails?.costForTwo}</span>
@@ -38,18 +38,18 @@ const Restraunt = () =>{
         <div>
             <hr></hr>
         </div>
-        <div className="items-list">
-            <h4>Recommended</h4>
-            <div className="list">
+        <div>
+            <h4 className="font-serif font-bold text-2xl m-2">Items Available</h4>
+            <div className="flex flex-col">
              {
                     itemCards?.map((item) => 
-                        <div key={item?._id} className="item">
-                            <img src={CDN_URL+item?.cloudinaryImageId} />
+                        <div key={item?._id} className="flex gap-5 border border-orange-500 rounded-md overflow-hidden mx-10 my-2 p-3 shadow-md">
+                            <img className="rounded-md w-30 h-40" src={CDN_URL+item?.cloudinaryImageId} />
                             <div className="item-content">
-                            <div className="item-name">
+                            <div className="font-serif font-bold">
                             <span>{item?.name}</span>
                             </div>
-                           <div className="item-details">
+                           <div className="flex flex-col">
                            <span>₹{item?.price}</span>
                             <span>⭐{item?.avgRating}</span>
                            </div>

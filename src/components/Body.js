@@ -40,8 +40,8 @@ if(!isOnline){
     return filteredResList?.length === 0 ? <Simmer /> : (
     <>
       <div className="body">
-        <div className="search">
-            <input className="search-input"
+        <div className="flex gap-5 items-center">
+            <input className="bg-transparent outline-none text-gray-800 placeholder-gray-400 pl-3"
                 type="text"
                 placeholder="type restraunt name here..."
                 value={searchRes}
@@ -49,7 +49,7 @@ if(!isOnline){
                 setSearchRes(e.target.value)
                 }
             ></input>
-            <button className="search-btn" onClick={() =>{
+            <button className="bg-blue-400 hover:bg-yellow-500 px-2 rounded-md" onClick={() =>{
                 if(searchRes){
                 filteredResList = searchRestraunt(searchRes, allResList)
                 }else{
@@ -57,14 +57,14 @@ if(!isOnline){
                 }
                 }}>Search</button>
         </div><br></br>
-        <div className="filter">
-            <button className="filter-btn" onClick={() =>{
+        <div className="pl-3">
+            <button className="bg-green-400 hover:bg-yellow-500 px-2 rounded-md" onClick={() =>{
                 console.log('-------------');
               filteredResList = allResList.filter((ele) => ele.avgRating == 4)
               console.log('filteredResList',filteredResList);
             }}>Top Rated Restaurant</button>
         </div><br></br>
-        <div className="res-container">
+        <div className="grid grid-cols-6 gap-2 p-2">
           {
               filteredResList.map(restaurant =>
                 <Link to={"/restraunt/"+restaurant.id} key={restaurant.id}>  <RestrauntCard resData={restaurant} /></Link>
