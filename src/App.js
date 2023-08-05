@@ -11,6 +11,7 @@ import Restraunt from "./components/Restraunt";
 import Cart from "./components/Cart";
 import Simmer from "./components/Simmer";
 // import Instamart from "./components/Instamart";
+import UserContext from "../src/utils/useContext";
 //chunking
 //code spliting
 //dynamic bundling
@@ -25,12 +26,20 @@ import Simmer from "./components/Simmer";
 
 const Instamart = lazy(() => import('./components/Instamart')); //generally our whole code bundles in an index.js file but if we use lazy loading then code for that  component will be bundled separtely
 const AppLayout = () => {
+const [user, setUser] = useState({
+    name: "Rakesh",
+    email: "rakesh@gmail.com"
+})
   return (
-    <div className="app">
-      <Header /><br></br>
+      <>
+      <UserContext.Provider value={{
+        user: user
+      }}>
+        <Header /><br></br>
       <Outlet /><br></br>
       <Footer /><br></br>
-    </div>
+      </UserContext.Provider>
+      </>
   );
 };
 

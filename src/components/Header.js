@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../utils/useContext";
+
 
 const Header = () => {
+  const { user } = useContext(UserContext);
+  
   let [title, setTitle] =  useState("Foodza");
     return (
       <div className="flex justify-between py-1 bg-purple-300 items-center shadow-lg">
@@ -11,7 +15,7 @@ const Header = () => {
             src={LOGO_URL}
           ></img>
         </div>
-        <h1 className="text-3xl font-bold font-serif">{title}</h1>
+        <h1 className="text-3xl font-bold font-serif">{user.name}</h1>
         <button onClick={() => setTitle("food villa")}></button>
         <div>
           <ul className="flex gap-8 pr-4">
